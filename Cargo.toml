@@ -18,6 +18,9 @@ exclude      = [
     "clone.sql",
     "verify.sh",
 ]
+repository = "https://github.com/victornavarrete/medoo_rs"
+homepage   = "https://github.com/victornavarrete/medoo_rs"
+documentation = "https://docs.rs/medoo_rs"
 
 [lib]
 name = "medoo_rs"

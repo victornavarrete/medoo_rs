@@ -9,6 +9,10 @@ keywords     = ["medoo", "database", "derive", "from-row", "macro"]
 categories   = ["database", "rust-patterns"]
 rust-version = "1.75"
 readme       = "README.md"
+repository = "https://github.com/victornavarrete/medoo_rs"
+homepage   = "https://github.com/victornavarrete/medoo_rs"
+documentation = "https://docs.rs/medoo_rs"
+
 
 [lib]
 proc-macro = true
