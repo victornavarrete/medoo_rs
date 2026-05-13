@@ -1,0 +1,19 @@
+[package]
+name         = "medoo_derive"
+version      = "0.1.0"
+edition      = "2021"
+description  = "Proc-macros para medoo_rs: #[derive(FromRow)]"
+license      = "Apache-2.0"
+authors      = ["Víctor Navarrete <victornavarrete@live.cl>"]
+keywords     = ["medoo", "database", "derive", "from-row", "macro"]
+categories   = ["database", "rust-patterns"]
+rust-version = "1.75"
+readme       = "README.md"
+
+[lib]
+proc-macro = true
+
+[dependencies]
+proc-macro2 = "1"
+quote       = "1"
+syn         = { version = "2", features = ["full"] }

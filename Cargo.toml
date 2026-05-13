@@ -1,0 +1,55 @@
+[package]
+name         = "medoo_rs"
+version      = "0.1.0"
+edition      = "2021"
+description  = "Query builder dinámico multi-backend (Postgres/MySQL/SQLite) inspirado en Medoo (PHP). Núcleo sin dependencias, pool async opcional."
+license      = "Apache-2.0"
+authors      = ["Víctor Navarrete <victornavarrete@live.cl>"]
+keywords     = ["database", "sql", "query-builder", "mysql", "postgres"]
+categories   = ["database"]
+rust-version = "1.75"
+readme       = "README.md"
+exclude      = [
+    "target/*",
+    ".claude/*",
+    "memory/*",
+    "PROGRESO.md",
+    "RUTA.md",
+    "clone.sql",
+    "verify.sh",
+]
+
+[lib]
+name = "medoo_rs"
+path = "src/lib.rs"
+
+[features]
+default = []
+postgres = []
+mysql = []
+sqlite = []
+# Adapters async sobre sqlx — opt-in.
+runtime-mysql    = ["dep:sqlx", "dep:tokio", "dep:futures", "sqlx/mysql",    "sqlx/runtime-tokio", "sqlx/macros"]
+runtime-postgres = ["dep:sqlx", "dep:tokio", "dep:futures", "sqlx/postgres", "sqlx/runtime-tokio", "sqlx/macros"]
+runtime-sqlite   = ["dep:sqlx", "dep:tokio", "dep:futures", "sqlx/sqlite",   "sqlx/runtime-tokio", "sqlx/macros"]
+# Macro #[derive(FromRow)] — opt-in.
+derive = ["dep:medoo_derive"]
+# Tipos chrono para fechas/horas — opt-in.
+chrono = ["dep:chrono"]
+
+[dependencies]
+sqlx          = { version = "0.8", default-features = false, optional = true }
+tokio         = { version = "1", default-features = false, features = ["time"], optional = true }
+futures       = { version = "0.3", default-features = false, features = ["std"], optional = true }
+medoo_derive  = { path = "./medoo-derive", version = "0.1", optional = true }
+chrono        = { version = "0.4", default-features = false, features = ["std", "clock"], optional = true }
+
+[dev-dependencies]
+tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
+
+[workspace]
+members = [".", "medoo-derive"]
+
+[package.metadata.docs.rs]
+all-features = true
+rustdoc-args = ["--cfg", "docsrs"]

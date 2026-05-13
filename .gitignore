@@ -1,0 +1,42 @@
+# Rust build artifacts
+/target/
+**/target/
+**/*.rs.bk
+*.pdb
+
+# Cargo
+# Cargo.lock se commitea en libs publicadas 
+
+# IDE / editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Claude Code local
+.claude/
+memory/
+CLAUDE.md
+MEMORY.md
+
+# Logs y dumps
+*.log
+queries.log
+*.sql.bak
+clone.sql
+
+# Env y secretos
+.env
+.env.*
+!.env.example
+credentials.toml
+
+# OS
+desktop.ini
+$RECYCLE.BIN/
+
+# Docs internas 
+# MANUAL.md
